@@ -67,10 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       onPressed: () {
         if (authservice.signIn12() != null) {
-          print('ss');
           Navigator.pushNamed(context, 'home');
         }
-        print('null');
       },
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
