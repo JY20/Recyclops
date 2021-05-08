@@ -1,7 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'auth.dart';
 import 'navigate.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -62,7 +66,11 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.white,
       ),
       onPressed: () {
-        Navigator.pushNamed(context, 'home');
+        if (authservice.signIn12() != null) {
+          print('ss');
+          Navigator.pushNamed(context, 'home');
+        }
+        print('null');
       },
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
