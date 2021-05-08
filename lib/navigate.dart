@@ -7,7 +7,7 @@ class Navigate extends StatefulWidget {
 }
 
 class _NavigateState extends State<Navigate> {
-  int pageIndex = 0;
+  int pageIndex = 1;
 
   pageDecider(int page) {
     if (page == 0) {
@@ -37,13 +37,18 @@ class _NavigateState extends State<Navigate> {
         },
         items: [
           FFNavigationBarItem(
+            iconData: Icons.attach_money_outlined,
+            label: 'Reward',
+            selectedBackgroundColor: Colors.blue,
+          ),
+          FFNavigationBarItem(
             iconData: Icons.person_outline_outlined,
             label: 'Home',
             selectedBackgroundColor: Colors.blue,
           ),
           FFNavigationBarItem(
-            iconData: Icons.medical_services_outlined,
-            label: 'Schedule',
+            iconData: Icons.calendar_today_outlined,
+            label: 'Calender',
             selectedBackgroundColor: Colors.blue,
           ),
         ],

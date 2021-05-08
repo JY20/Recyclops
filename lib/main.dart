@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'navigate.dart';
 
 void main() {
