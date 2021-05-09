@@ -18,9 +18,9 @@ class Authservice {
   String name;
   String userEmail;
   String header;
-  List<String> recy_items = ["tin can", "plastic bottle"];
+  List<String> recy_items = ["tin can", "plastic bottle", "glass bottle"];
   List<String> nonrecy_items = ["bottle cap", "straw"];
-  List<String> recy_num = ['1', '2'];
+  List<String> recy_num = ['1', '2', '2'];
   List<String> nonrecy_num = ['2', '1'];
   int score = 100;
   int day = 2;

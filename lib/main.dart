@@ -145,8 +145,11 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(Icons.account_circle, size: 200, color: Colors.amber),
-            SizedBox(height: 50),
+            Image(
+              image: AssetImage("assets/logo2.png"),
+              height: 250.0,
+            ),
+            SizedBox(height: 30),
             Text(
               'Welcome To Recyclops',
               style: TextStyle(fontSize: 30, color: Colors.yellow[900]),
