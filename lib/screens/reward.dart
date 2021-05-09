@@ -309,7 +309,7 @@ Widget userPoints() {
           ),
         ),
         Text(
-          "\$20 Earned",
+          "\$0 Earned",
           style: TextStyle(
             fontWeight: FontWeight.w300,
             fontSize: 30.0,

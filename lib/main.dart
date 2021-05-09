@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'auth.dart';
@@ -141,25 +143,113 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image(
-              image: AssetImage("assets/logo2.png"),
-              height: 250.0,
-            ),
-            SizedBox(height: 30),
-            Text(
-              'Welcome To Recyclops',
-              style: TextStyle(fontSize: 30, color: Colors.yellow[900]),
-            ),
-            SizedBox(height: 50),
-            _signInButton(),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/bg.jpeg"),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(80.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image(
+                image: AssetImage("assets/logo2.png"),
+                height: 250.0,
+              ),
+              SizedBox(height: 30),
+              Text(
+                'Recyclops',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.yellow[900].withOpacity(0.8),
+                ),
+              ),
+              SizedBox(height: 100),
+              signInBtn(),
+              // _signInButton()
+            ],
+          ),
         ),
       ),
-      backgroundColor: Colors.grey[850],
+    );
+  }
+
+  Widget signInBtn() {
+    return new GestureDetector(
+      onTap: () {
+        print("Container clicked");
+        if (authservice.signIn12() != null) {
+          Navigator.pushNamed(context, 'home');
+        }
+      },
+      child: Center(
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 16.0,
+                spreadRadius: 1,
+                color: Colors.white.withOpacity(0.1),
+              )
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(60.0),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: 20.0,
+                sigmaY: 20.0,
+              ),
+              // Main thing
+              child: Container(
+                height: 60,
+                width: 500,
+                decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(60.0),
+                    border: Border.all(
+                      width: 1.5,
+                      color: Colors.black.withOpacity(0.1),
+                    )),
+                child: Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Image(
+                          image: AssetImage("assets/google_logo.png"),
+                          height: 30.0,
+                        ),
+                        Expanded(
+                          child: Container(
+                            child: Text(
+                              "Sign in with Google",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black.withOpacity(0.7)),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 
@@ -170,7 +260,7 @@ class _MyHomePageState extends State<MyHomePage> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(40),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.white.withOpacity(0.6),
       ),
       onPressed: () {
         if (authservice.signIn12() != null) {

@@ -10,7 +10,7 @@ class Navigate extends StatefulWidget {
 }
 
 class _NavigateState extends State<Navigate> {
-  int pageIndex = 0;
+  int pageIndex = 1;
 
   pageDecider(int page) {
     if (page == 0) {
