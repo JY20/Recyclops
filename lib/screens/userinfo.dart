@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../auth.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,6 +8,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<String> entries = <String>['A', 'B', 'C'];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -61,7 +63,7 @@ Widget userName() {
           ),
         ),
         Text(
-          'User Name        ',
+          '${authservice.getName()}',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 45.0,
@@ -78,10 +80,10 @@ Widget userPoints() {
     padding: EdgeInsets.all(16.0),
     child: Row(
       children: [
-        Image(
-          image: AssetImage("assets/medal.png"),
-          height: 100.0,
-        ),
+        // Image(
+        //   image: AssetImage("assets/medal.png"),
+        //   height: 100.0,
+        // ),
         SizedBox(
           width: 5.0,
         ),
@@ -96,7 +98,7 @@ Widget userPoints() {
               ),
             ),
             Text(
-              '1050 Points Earned',
+              '${authservice.getScore()} Points Earned',
               style: TextStyle(
                 fontWeight: FontWeight.w300,
                 fontSize: 30.0,
@@ -104,7 +106,7 @@ Widget userPoints() {
               ),
             ),
             Text(
-              '   Recycled 5000 Items',
+              '   Recycled ${authservice.getTotal()} Items',
               style: TextStyle(
                 fontWeight: FontWeight.w300,
                 fontSize: 30.0,

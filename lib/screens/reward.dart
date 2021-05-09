@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
+import '../auth.dart';
+
 class RewardScreen extends StatefulWidget {
   @override
   _RewardScreenState createState() => _RewardScreenState();
@@ -156,7 +158,7 @@ Widget userPoints() {
     child: Column(
       children: [
         Text(
-          '1050 Points Earned',
+          '${authservice.getScore()} Points Earned',
           style: TextStyle(
             fontWeight: FontWeight.w300,
             fontSize: 30.0,

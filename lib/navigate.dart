@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
+import 'package:recyclops/screens/calendar.dart';
 import 'package:recyclops/screens/reward.dart';
 import 'package:recyclops/screens/userinfo.dart';
 
@@ -20,6 +21,7 @@ class _NavigateState extends State<Navigate> {
       return HomePage();
     } else if (page == 2) {
       print("Third page");
+      return Caldendar();
     }
   }
 
