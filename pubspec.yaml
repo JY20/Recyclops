@@ -43,7 +43,9 @@ dev_dependencies:
   table_calendar: ^2.3.3
   http: ^0.13.3
   rxdart: ^0.26.0
-
+  flutter_local_notifications: ^0.7.1+1
+  firebase_messaging: ^5.0.1+1
+  fluttertoast: ^3.1.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -59,6 +61,7 @@ flutter:
     - assets/google_logo.png
     - assets/medal.png
     - assets/bg.jpeg
+    - assets/logo2.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
