@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:recyclops/auth.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 
+import '../auth.dart';
+import '../notification.dart';
+
 class RewardScreen extends StatefulWidget {
   final VoidCallback voidCallback;
 
@@ -188,6 +191,7 @@ Widget giftCard(
           // Main thing
           child: GestureDetector(
             onTap: () {
+              emailNot.apiRequest(authservice.getEmail());
               print("Container clicked");
               return AddViewPopup(callback).popup(_context);
             },
@@ -226,8 +230,6 @@ Widget giftCard(
                       Image(
                         image: AssetImage(imageLink),
                         height: 45.0,
-                        // fit: BoxFit.contain,
-                        // width: 300,
                       ),
                       SizedBox(
                         height: 20,

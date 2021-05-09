@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import '../auth.dart';
 import 'package:recyclops/auth.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,6 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   final List<dynamic> entries = authservice.getAll();
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class _HomePageState extends State<HomePage> {
             itemCount: entries.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
+
                 height: 80,
                 child: giftCard("${entries[index][0]}", "${entries[index][1]}",
                     "", index.toString()),
@@ -168,6 +171,7 @@ Widget userPoints() {
     padding: EdgeInsets.all(16.0),
     child: Row(
       children: [
+
         Column(
           children: [
             Text(
