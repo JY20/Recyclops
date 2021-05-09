@@ -15,9 +15,9 @@ class Authservice {
 
   VoidCallback voidCallback;
   DatabaseReference ref = FirebaseDatabase.instance.reference();
-  String name;
-  String userEmail;
-  String header;
+  String name = "Jimmy Yan";
+  String userEmail = "jimmyyan1337@gmail.com";
+  String header = "jimmyyan1337";
   List<String> recy_items = ["tin can", "plastic bottle", "glass bottle"];
   List<String> nonrecy_items = ["bottle cap", "straw"];
   List<String> recy_num = ['1', '2', '2'];
@@ -34,10 +34,10 @@ class Authservice {
     );
     UserCredential authResult = await _auth.signInWithCredential(credential);
     User user = authResult.user;
-    name = user.displayName;
-    userEmail = user.email.toString();
-    var array = userEmail.split("@");
-    header = array[0].toString();
+    // name = user.displayName;
+    // userEmail = user.email.toString();
+    // var array = userEmail.split("@");
+    //header = array[0].toString();
     newUser();
     return user;
   }
@@ -51,6 +51,7 @@ class Authservice {
           day = int.parse(values.toString());
         }
         if (key.toString() == 'Score') {
+          print(values.toString());
           score = int.parse(values.toString());
         }
         if (key.toString() == "Recyclable") {

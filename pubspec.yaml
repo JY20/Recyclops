@@ -35,6 +35,7 @@ dependencies:
   firebase_auth: ^1.0.0
   google_sign_in: ^5.0.0
   glassmorphism: ^2.0.1
+  awesome_dialog: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +64,11 @@ flutter:
     - assets/medal.png
     - assets/bg.jpeg
     - assets/logo2.png
+    - assets/amazon.png
+    - assets/ebay.png
+    - assets/itunes.png
+    - assets/starbucks.png
+    - assets/visa.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

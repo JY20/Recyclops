@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import '../auth.dart';
+import 'package:recyclops/auth.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,9 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<String> entries = authservice.recyList();
-  final List<String> amounts = authservice.recyPoints();
 
+  final List<dynamic> entries = authservice.getAll();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,11 +36,10 @@ class _HomePageState extends State<HomePage> {
             itemCount: entries.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                height: 50,
-                color: Colors.amber,
-                child: Center(
-                    child: Text(
-                        'Item: ${entries[index]}  Amount: ${amounts[index]}')),
+
+                height: 80,
+                child: giftCard("${entries[index][0]}", "${entries[index][1]}",
+                    "", index.toString()),
               );
             },
             separatorBuilder: (BuildContext context, int index) =>
@@ -48,6 +49,93 @@ class _HomePageState extends State<HomePage> {
       ],
     );
   }
+}
+
+Widget giftCard(String name, String amount, String imageLink, String index) {
+  return Center(
+    child: Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 16.0,
+            spreadRadius: 1,
+            color: Colors.white.withOpacity(0.1),
+          )
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(60.0),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(
+            sigmaX: 20.0,
+            sigmaY: 20.0,
+          ),
+          // Main thing
+          child: Container(
+            height: 80,
+            width: 400,
+            decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(60.0),
+                border: Border.all(
+                  width: 1.5,
+                  color: Colors.white.withOpacity(0.1),
+                )),
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "${index} )",
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black.withOpacity(0.7)),
+                    ),
+                    SizedBox(
+                      width: 30,
+                    ),
+                    Text(
+                      name,
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black.withOpacity(0.7)),
+                    ),
+                    Expanded(
+                      child: Container(
+                        child: Text(
+                          amount,
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.black.withOpacity(0.7)),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    // Align(
+                    //   alignment: Alignment.centerRight,
+                    //   child: Container(
+                    //     child:
+                    //   ),
+                    // ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
 }
 
 Widget userName() {
@@ -66,7 +154,7 @@ Widget userName() {
           ),
         ),
         Text(
-          '${authservice.getName()}',
+          '${authservice.getName()}        ',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 45.0,
@@ -83,33 +171,22 @@ Widget userPoints() {
     padding: EdgeInsets.all(16.0),
     child: Row(
       children: [
-        // Image(
-        //   image: AssetImage("assets/medal.png"),
-        //   height: 100.0,
-        // ),
-        SizedBox(
-          width: 5.0,
-        ),
+
         Column(
           children: [
             Text(
-              'You currently have:',
+              '${authservice.getScore()} Points              ',
               style: TextStyle(
                 fontWeight: FontWeight.w300,
                 fontSize: 30.0,
                 color: Colors.black.withOpacity(1),
               ),
             ),
-            Text(
-              '${authservice.getScore()} Points Earned',
-              style: TextStyle(
-                fontWeight: FontWeight.w300,
-                fontSize: 30.0,
-                color: Colors.black.withOpacity(1),
-              ),
+            SizedBox(
+              height: 20,
             ),
             Text(
-              '   Recycled ${authservice.getTotal()} Items',
+              'Recycled ${authservice.getTotal()} Items  ',
               style: TextStyle(
                 fontWeight: FontWeight.w300,
                 fontSize: 30.0,
@@ -121,10 +198,6 @@ Widget userPoints() {
       ],
     ),
   );
-}
-
-void createListWidgets() {
-  for (var i = 0; i < 15; i++) {}
 }
 
 Widget recycledItemsList(String text, String imageLink) {
