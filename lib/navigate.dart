@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
+import 'package:recyclops/screens/reward.dart';
+import 'package:recyclops/screens/userinfo.dart';
 
 class Navigate extends StatefulWidget {
   @override
@@ -7,18 +9,32 @@ class Navigate extends StatefulWidget {
 }
 
 class _NavigateState extends State<Navigate> {
-  int pageIndex = 1;
+  int pageIndex = 0;
 
   pageDecider(int page) {
     if (page == 0) {
+      print("First page");
+      return RewardScreen();
     } else if (page == 1) {
-    } else if (page == 2) {}
+      print("Second page");
+      return HomePage();
+    } else if (page == 2) {
+      print("Third page");
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pageDecider(pageIndex),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/bg.jpeg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: pageDecider(pageIndex),
+      ),
       bottomNavigationBar: FFNavigationBar(
         theme: FFNavigationBarTheme(
           barBackgroundColor: Colors.grey[850],
