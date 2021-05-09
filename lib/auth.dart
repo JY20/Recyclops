@@ -39,14 +39,10 @@ class Authservice {
     var array = userEmail.split("@");
     header = array[0].toString();
     newUser();
-    newUser();
-    print(score.toString() + day.toString());
-    print(recy_num);
-    print(nonrecy_num);
     return user;
   }
 
-  Future<void> getInfo() {
+  void getInfo() {
     DatabaseReference usersRef = ref.child(header);
     usersRef.once().then((DataSnapshot snapshot) {
       Map<dynamic, dynamic> values = snapshot.value;
@@ -96,7 +92,9 @@ class Authservice {
         usersRef.child('Schedule').set("2");
         usersRef.child('Score').set("0");
       }
+      print("before");
       getInfo();
+      print("after");
     });
   }
 
@@ -114,6 +112,30 @@ class Authservice {
 
   int getScore() {
     return score;
+  }
+
+  int getTotal() {
+    int total = 0;
+    for (var i = 0; i < recy_num.length; i++) {
+      total = total + int.parse(recy_num[i]);
+    }
+    for (var i = 0; i < nonrecy_num.length; i++) {
+      total = total + int.parse(nonrecy_num[i]);
+    }
+    return total;
+  }
+
+  List<dynamic> getAll() {
+    var all = [];
+    for (var i = 0; i < recy_num.length; i++) {
+      var temp = [recy_items[i], int.parse(recy_num[i])];
+      all.add(temp);
+    }
+    for (var i = 0; i < nonrecy_num.length; i++) {
+      var temp = [nonrecy_items[i], int.parse(nonrecy_num[i])];
+      all.add(temp);
+    }
+    return all;
   }
 
   List<String> nonrecyList() {
