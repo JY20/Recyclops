@@ -33,7 +33,10 @@ class _NavigateState extends State<Navigate> {
             fit: BoxFit.cover,
           ),
         ),
-        child: pageDecider(pageIndex),
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: pageDecider(pageIndex),
+        ),
       ),
       bottomNavigationBar: FFNavigationBar(
         theme: FFNavigationBarTheme(

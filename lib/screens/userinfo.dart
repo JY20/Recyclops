@@ -57,7 +57,7 @@ Widget userName() {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 45.0,
-            color: Colors.white.withOpacity(1),
+            color: Colors.black.withOpacity(1),
           ),
         ),
         Text(
@@ -65,7 +65,7 @@ Widget userName() {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 45.0,
-            color: Colors.white.withOpacity(1),
+            color: Colors.black.withOpacity(1),
           ),
         ),
       ],
@@ -92,7 +92,7 @@ Widget userPoints() {
               style: TextStyle(
                 fontWeight: FontWeight.w300,
                 fontSize: 30.0,
-                color: Colors.white.withOpacity(1),
+                color: Colors.black.withOpacity(1),
               ),
             ),
             Text(
@@ -100,7 +100,7 @@ Widget userPoints() {
               style: TextStyle(
                 fontWeight: FontWeight.w300,
                 fontSize: 30.0,
-                color: Colors.white.withOpacity(1),
+                color: Colors.black.withOpacity(1),
               ),
             ),
             Text(
@@ -108,7 +108,7 @@ Widget userPoints() {
               style: TextStyle(
                 fontWeight: FontWeight.w300,
                 fontSize: 30.0,
-                color: Colors.white.withOpacity(1),
+                color: Colors.black.withOpacity(1),
               ),
             ),
           ],
@@ -147,7 +147,7 @@ Widget recycledItemsList(String text, String imageLink) {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,
-              color: Colors.white.withOpacity(1),
+              color: Colors.black.withOpacity(1),
             ),
           ),
         ],

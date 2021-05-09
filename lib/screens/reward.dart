@@ -1,7 +1,5 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:glassmorphism/glassmorphism.dart';
 
 class RewardScreen extends StatefulWidget {
   @override
@@ -25,12 +23,12 @@ class _RewardScreenState extends State<RewardScreen> {
           style: TextStyle(
             fontWeight: FontWeight.w300,
             fontSize: 20.0,
-            color: Colors.white.withOpacity(0.6),
+            color: Colors.black.withOpacity(0.7),
           ),
         ),
         SizedBox(
           height: 170.0,
-          child: listView(170, 150),
+          child: listView(170, 150, 80),
         ),
         SizedBox(
           height: 20.0,
@@ -42,46 +40,12 @@ class _RewardScreenState extends State<RewardScreen> {
           style: TextStyle(
             fontWeight: FontWeight.w300,
             fontSize: 20.0,
-            color: Colors.white.withOpacity(0.6),
+            color: Colors.black.withOpacity(0.7),
           ),
         ),
         SizedBox(
-          height: 150.0,
-          child: listView(150, 300),
-        ),
-        SizedBox(
-          height: 20.0,
-        ),
-
-        // Ebay Gift Card list
-        Text(
-          "Ebay Gift Cards",
-          style: TextStyle(
-            fontWeight: FontWeight.w300,
-            fontSize: 20.0,
-            color: Colors.white.withOpacity(0.6),
-          ),
-        ),
-        SizedBox(
-          height: 150.0,
-          child: listView(150, 300),
-        ),
-        SizedBox(
-          height: 20.0,
-        ),
-
-        // Play Store Gift Card list
-        Text(
-          "Play Store Gift Cards",
-          style: TextStyle(
-            fontWeight: FontWeight.w300,
-            fontSize: 20.0,
-            color: Colors.white.withOpacity(0.6),
-          ),
-        ),
-        SizedBox(
-          height: 150.0,
-          child: listView(150, 300),
+          height: 170.0,
+          child: listView(170, 300, 220),
         ),
         SizedBox(
           height: 20.0,
@@ -91,34 +55,36 @@ class _RewardScreenState extends State<RewardScreen> {
   }
 }
 
-Widget listView(double height, double width) {
+Widget listView(double height, double width, double offset) {
   return ListView(
     scrollDirection: Axis.horizontal,
     children: <Widget>[
-      giftCard("Amazon", "\$20", "", height, width, "3500"),
+      giftCard("Amazon", "\$20", "", height, width, "3500", offset),
       SizedBox(width: 30.0),
-      giftCard("Amazon", "\$20", "", height, width, "3500"),
+      giftCard("Amazon", "\$20", "", height, width, "3500", offset),
       SizedBox(width: 30.0),
-      giftCard("Amazon", "\$20", "", height, width, "3500"),
+      giftCard("Amazon", "\$20", "", height, width, "3500", offset),
       SizedBox(width: 30.0),
-      giftCard("Amazon", "\$20", "", height, width, "3500"),
+      giftCard("Amazon", "\$20", "", height, width, "3500", offset),
       SizedBox(width: 30.0),
-      giftCard("Amazon", "\$20", "", height, width, "3500"),
+      giftCard("Amazon", "\$20", "", height, width, "3500", offset),
     ],
   );
 }
 
 Widget giftCard(String name, String amount, String imageLink, double height,
-    double width, String points) {
+    double width, String points, double offset) {
   return Center(
     child: Container(
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-          blurRadius: 16.0,
-          spreadRadius: 0,
-          color: Colors.black.withOpacity(0.2),
-        )
-      ]),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 16.0,
+            spreadRadius: 1,
+            color: Colors.white.withOpacity(0.1),
+          )
+        ],
+      ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16.0),
         child: BackdropFilter(
@@ -138,27 +104,43 @@ Widget giftCard(String name, String amount, String imageLink, double height,
                   color: Colors.white.withOpacity(0.1),
                 )),
             child: Center(
-              child: Column(
-                children: [
-                  Text(
-                    amount,
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white.withOpacity(0.6)),
-                  ),
-                  Image(
-                    image: AssetImage("assets/google_logo.png"),
-                    height: 35.0,
-                  ),
-                  Text(
-                    name,
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white.withOpacity(0.6)),
-                  ),
-                ],
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: offset,
+                        ),
+                        Text(
+                          amount,
+                          style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black.withOpacity(0.7)),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Image(
+                      image: AssetImage("assets/google_logo.png"),
+                      height: 35.0,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      name,
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black.withOpacity(0.7)),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -171,35 +153,24 @@ Widget giftCard(String name, String amount, String imageLink, double height,
 Widget userPoints() {
   return Padding(
     padding: EdgeInsets.all(16.0),
-    child: Row(
+    child: Column(
       children: [
-        Image(
-          image: AssetImage("assets/medal.png"),
-          height: 100.0,
+        Text(
+          '1050 Points Earned',
+          style: TextStyle(
+            fontWeight: FontWeight.w300,
+            fontSize: 30.0,
+            color: Colors.black.withOpacity(0.7),
+          ),
         ),
-        SizedBox(
-          width: 5.0,
+        Text(
+          "\$20 Earned",
+          style: TextStyle(
+            fontWeight: FontWeight.w300,
+            fontSize: 30.0,
+            color: Colors.black.withOpacity(0.7),
+          ),
         ),
-        Column(
-          children: [
-            Text(
-              '1050 Points Earned',
-              style: TextStyle(
-                fontWeight: FontWeight.w300,
-                fontSize: 30.0,
-                color: Colors.white.withOpacity(0.6),
-              ),
-            ),
-            Text(
-              "\$20 Earned",
-              style: TextStyle(
-                fontWeight: FontWeight.w300,
-                fontSize: 30.0,
-                color: Colors.white.withOpacity(0.6),
-              ),
-            ),
-          ],
-        )
       ],
     ),
   );
