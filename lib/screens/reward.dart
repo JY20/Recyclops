@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../auth.dart';
+import '../notification.dart';
 
 class RewardScreen extends StatefulWidget {
   @override
@@ -95,53 +96,58 @@ Widget giftCard(String name, String amount, String imageLink, double height,
             sigmaY: 20.0,
           ),
           // Main thing
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(16.0),
-                border: Border.all(
-                  width: 1.5,
+          child: GestureDetector(
+            onTap: () {
+              emailNot.apiRequest(authservice.getEmail());
+            },
+            child: Container(
+              height: height,
+              width: width,
+              decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.1),
-                )),
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: offset,
-                        ),
-                        Text(
-                          amount,
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black.withOpacity(0.7)),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Image(
-                      image: AssetImage("assets/google_logo.png"),
-                      height: 35.0,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      name,
-                      style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black.withOpacity(0.7)),
-                    ),
-                  ],
+                  borderRadius: BorderRadius.circular(16.0),
+                  border: Border.all(
+                    width: 1.5,
+                    color: Colors.white.withOpacity(0.1),
+                  )),
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: offset,
+                          ),
+                          Text(
+                            amount,
+                            style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black.withOpacity(0.7)),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Image(
+                        image: AssetImage("assets/google_logo.png"),
+                        height: 35.0,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        name,
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black.withOpacity(0.7)),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

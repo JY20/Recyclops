@@ -7,7 +7,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<String> entries = <String>['A', 'B', 'C'];
+  final List<String> entries = authservice.recyList();
+  final List<String> amounts = authservice.recyPoints();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,9 @@ class _HomePageState extends State<HomePage> {
               return Container(
                 height: 50,
                 color: Colors.amber,
-                child: Center(child: Text('Entry ${entries[index]}')),
+                child: Center(
+                    child: Text(
+                        'Item: ${entries[index]}  Amount: ${amounts[index]}')),
               );
             },
             separatorBuilder: (BuildContext context, int index) =>
