@@ -20,10 +20,10 @@ class Authservice {
   String header;
   List<String> recy_items = ["tin can", "plastic bottle"];
   List<String> nonrecy_items = ["bottle cap", "straw"];
-  List<String> recy_num = ['saassss', 's'];
-  List<String> nonrecy_num = ['s', 's'];
-  int score;
-  int day;
+  List<String> recy_num = ['1', '2'];
+  List<String> nonrecy_num = ['2', '1'];
+  int score = 100;
+  int day = 2;
 
   Future<User> signIn12() async {
     GoogleSignInAccount guser = await _googleSignIn.signIn();
@@ -38,6 +38,7 @@ class Authservice {
     userEmail = user.email.toString();
     var array = userEmail.split("@");
     header = array[0].toString();
+    newUser();
     newUser();
     print(score.toString() + day.toString());
     print(recy_num);
